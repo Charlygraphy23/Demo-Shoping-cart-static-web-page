@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+import HomePageComponent from './components/HomePageComponent'
+import ProductProvider from './context/ProductProvider'
+import CartProvider from './context/CartProvider'
+import AmountProvider from './context/AmountProvider'
+import {ToastContainer} from 'react-toastify'
 
-function App() {
+const App=()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <ProductProvider className="App">
+        <ToastContainer/>
+        <CartProvider>
+                  
+                    <AmountProvider>
+                         <HomePageComponent/>
+                    </AmountProvider>
+                  
+        </CartProvider>         
+      </ProductProvider>
+
   );
 }
 
